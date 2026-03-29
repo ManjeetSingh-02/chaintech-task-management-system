@@ -27,7 +27,7 @@ export const controller = {
   },
 
   // @controller GET /
-  getAllTasks: async (_request: Request, response: Response) => {
+  getAllTasks: async (_request: Request, response: Response<ISuccessResponse<object>>) => {
     // fetch all tasks from db
     const existingTasks = await prismaClient.task.findMany({
       orderBy: {
