@@ -30,7 +30,7 @@ export default function (schema: ZodObject) {
     if (result.data.query) Object.assign(request.query, result.data.query);
     if (result.data.params) Object.assign(request.params, result.data.params);
 
-    // forward request to next middleware
+    // forward request to next middleware or controller
     nextFunction();
   };
 }
