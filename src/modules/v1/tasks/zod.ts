@@ -5,7 +5,6 @@ import z from 'zod';
 const taskTitleSchema = z
   .string()
   .trim()
-  .nonempty({ error: 'taskTitle is required' })
   .min(3, { error: 'taskTitle must be at least 3 characters long' })
   .max(30, { error: 'taskTitle must be at most 30 characters long' });
 
@@ -13,7 +12,6 @@ const taskTitleSchema = z
 const taskDescriptionSchema = z
   .string()
   .trim()
-  .nonempty({ error: 'taskDescription is required' })
   .min(10, { error: 'taskDescription must be at least 10 characters long' })
   .max(50, { error: 'taskDescription must be at most 50 characters long' });
 
@@ -40,7 +38,7 @@ export const updateTaskSchema = z.object({
       isTaskCompleted: z.boolean().optional(),
     })
     .refine(data => Object.keys(data).length > 0, {
-      message: 'At least one field must be provided for update',
+      message: 'Request body cannot be empty, at least one field must be provided to update a task',
     }),
 });
 
