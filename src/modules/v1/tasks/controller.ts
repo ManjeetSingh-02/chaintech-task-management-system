@@ -63,7 +63,7 @@ export const controller = {
       // if the task is completed and the request is marking it completed again, send error response
       if (request.task.isCompleted && request.body.isTaskCompleted)
         return response.status(400).json(
-          new ErrorResponse<null>({
+          new ErrorResponse({
             message: 'Task is already marked as completed',
             code: 'TASK_ALREADY_COMPLETED',
             issues: null,
@@ -84,7 +84,7 @@ export const controller = {
 
     // send success response
     return response.status(200).json(
-      new SuccessResponse<object>({
+      new SuccessResponse({
         message: 'Task updated successfully',
         data: updatedTask,
       })
@@ -102,7 +102,7 @@ export const controller = {
 
     // send success response
     return response.status(200).json(
-      new SuccessResponse<null>({
+      new SuccessResponse({
         message: 'Task deleted successfully',
         data: null,
       })

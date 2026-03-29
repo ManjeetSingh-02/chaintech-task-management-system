@@ -21,7 +21,7 @@ export const doesTaskExist = async (
   // if task does not exist, send error response
   if (!existingTask)
     return response.status(404).json(
-      new ErrorResponse<null>({
+      new ErrorResponse({
         message: 'Task with given id does not exist',
         code: 'TASK_NOT_FOUND',
         issues: null,

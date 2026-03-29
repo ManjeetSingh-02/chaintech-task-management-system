@@ -18,7 +18,7 @@ export default function (schema: ZodObject) {
     // if validation fails
     if (!result.success)
       return response.status(400).json(
-        new ErrorResponse<Array<string>>({
+        new ErrorResponse({
           message: 'Invalid request data',
           code: 'VALIDATION_ERROR',
           issues: result.error.issues.map(issue => `${issue.path.join('.')}: ${issue.message}`),
