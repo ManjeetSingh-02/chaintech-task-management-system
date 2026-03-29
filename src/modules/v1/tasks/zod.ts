@@ -24,7 +24,7 @@ const taskIdSchema = z.object({
 export const createTaskSchema = z.object({
   body: z.object({
     taskTitle: taskTitleSchema,
-    taskDescription: taskDescriptionSchema,
+    taskDescription: taskDescriptionSchema.optional(),
   }),
 });
 
