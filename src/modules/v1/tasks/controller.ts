@@ -27,7 +27,22 @@ export const controller = {
   },
 
   // @controller GET /
-  getAllTasks: (_request: Request, response: Response) => {},
+  getAllTasks: async (_request: Request, response: Response) => {
+    // fetch all tasks from db
+    const existingTasks = await prismaClient.task.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    // send success response
+    return response.status(200).json(
+      new SuccessResponse({
+        message: 'Tasks fetched successfully',
+        data: existingTasks,
+      })
+    );
+  },
 
   // @controller PATCH /:id
   updateTask: (request: Request, response: Response) => {},
