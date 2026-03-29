@@ -28,8 +28,11 @@ export const doesTaskExist = async (
       })
     );
 
-  // attach task to request object for use in controller
-  request.task = existingTask;
+  // attach task details to request object for use in controller
+  request.task = {
+    id: existingTask.id,
+    isCompleted: existingTask.isCompleted,
+  };
 
   // forward request to next middleware or controller
   nextFunction();
