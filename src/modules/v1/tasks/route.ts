@@ -2,6 +2,7 @@
 import { asyncHandler, validateZodSchema } from '@/core/index.js';
 import { controller } from './controller.js';
 import { createTaskSchema, deleteTaskSchema, updateTaskSchema } from './zod.js';
+import { doesTaskExist } from './middleware.js';
 
 // external-imports
 import { Router } from 'express';
@@ -16,7 +17,17 @@ router.post('/', validateZodSchema(createTaskSchema), asyncHandler(controller.cr
 router.get('/', asyncHandler(controller.getAllTasks));
 
 // @route PATCH /:id
-router.patch('/:id', validateZodSchema(updateTaskSchema), asyncHandler(controller.updateTask));
+router.patch(
+  '/:id',
+  validateZodSchema(updateTaskSchema),
+  asyncHandler(doesTaskExist),
+  asyncHandler(controller.updateTask)
+);
 
 // @route DELETE /:id
-router.delete('/:id', validateZodSchema(deleteTaskSchema), asyncHandler(controller.deleteTask));
+router.delete(
+  '/:id',
+  validateZodSchema(deleteTaskSchema),
+  asyncHandler(doesTaskExist),
+  asyncHandler(controller.deleteTask)
+);
