@@ -3,6 +3,9 @@ export { APP_CONFIG } from './config/constants.js';
 export { corsConfig } from './config/cors.js';
 export { env } from './config/env.js';
 
+// database
+export { prismaClient } from './database/prisma.js';
+
 // loader
 export { default as loadModules } from './loader/modules.js';
 
