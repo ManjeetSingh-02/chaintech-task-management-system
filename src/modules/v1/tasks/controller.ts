@@ -92,5 +92,20 @@ export const controller = {
   },
 
   // @controller DELETE /:id
-  deleteTask: (_request: Request, response: Response) => {},
+  deleteTask: async (request: Request, response: Response<ISuccessResponse<null>>) => {
+    // delete the task from db
+    await prismaClient.task.delete({
+      where: {
+        id: request.params.id as string,
+      },
+    });
+
+    // send success response
+    return response.status(200).json(
+      new SuccessResponse<null>({
+        message: 'Task deleted successfully',
+        data: null,
+      })
+    );
+  },
 };
