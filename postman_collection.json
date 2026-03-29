@@ -1,0 +1,92 @@
+{
+  "info": {
+    "_postman_id": "536e0bcf-1ac9-47ca-9276-85830f8b7e2b",
+    "name": "chaintech_task_management_system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40778073"
+  },
+  "item": [
+    {
+      "name": "/tasks",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"taskTitle\": \"task-1\",\n    \"taskDescription\": \"desc of task1\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost:3000}}{{api/v1}}/tasks",
+          "host": ["{{localhost:3000}}{{api/v1}}"],
+          "path": ["tasks"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{localhost:3000}}{{api/v1}}/tasks",
+          "host": ["{{localhost:3000}}{{api/v1}}"],
+          "path": ["tasks"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/tasks/:id",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"taskTitle\": \"updated task-1\",\n    \"taskDescription\": \"updated desc of task1\",\n    \"isTaskCompleted\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost:3000}}{{api/v1}}/tasks/:id",
+          "host": ["{{localhost:3000}}{{api/v1}}"],
+          "path": ["tasks", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "c4190991-6c88-49ab-97f7-935501f64b4c"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/tasks/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{localhost:3000}}{{api/v1}}/tasks/:id",
+          "host": ["{{localhost:3000}}{{api/v1}}"],
+          "path": ["tasks", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "e3b55c39-32da-42ae-bf6e-87368bd1b8f7"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
